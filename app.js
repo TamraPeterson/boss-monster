@@ -97,6 +97,12 @@ function stopDmg() {
   }
 }
 
+function killCount() {
+  if (tom.health == 0) {
+
+  }
+}
+
 function reset() {
   tom.health = 100
   harry.health = 100
