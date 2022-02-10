@@ -74,7 +74,7 @@ function drawTom() {
 
 function atk() {
   if (harry.health > 0) {
-    tom.health -= 5
+    tom.health -= Math.floor(Math.random() * 10)
     if (tom.health <= 0) {
       tom.health = 0
     }
