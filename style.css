@@ -17,4 +17,10 @@ img{
   object-fit: cover;
  min-height: 400px;
  width: 500px
+ 
+}
+
+.bg-img{
+background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fprd-rteditorial%2Fwp-content%2Fuploads%2F2019%2F04%2F01192130%2FHarry_Potter_Deathly_Hallows2_Courtyard.jpg');
+background-size: cover;
 }

@@ -32,7 +32,7 @@ function drawHarry() {
         <img class="img img-fluid rounded clickable" 
           src="${image}"
           alt="">
-        <h5>Health: <span id="health">${harry.health}</span></h5>
+        <h5 class="p-3">Health: <span id="health">${harry.health}</span></h5>
         <div class="progress">
           <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: ${harry.health}%"
             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
@@ -60,7 +60,7 @@ function drawTom() {
     <img class="img img-fluid rounded clickable" onclick="atk()"
       src="${image}"
       alt="">
-    <h5>Health: <span id="health">${tom.health}</span></h5>
+    <h5 class="p-3">Health: <span id="health">${tom.health}</span></h5>
     <div class="progress">
       <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: ${tom.health}%"
         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
@@ -95,6 +95,13 @@ function stopDmg() {
   if (tom.health == 0) {
     clearInterval(dmgInterval)
   }
+}
+
+function reset() {
+  tom.health = 100
+  harry.health = 100
+  drawHarry()
+  drawTom()
 }
 
 drawHarry()
