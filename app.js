@@ -3,8 +3,9 @@ const harry = {
   images: {
     healthy: 'https://cdn.vox-cdn.com/thumbor/QK6pVSgUPodR2kEFpvl0BL15GrI=/0x0:1920x1080/1200x800/filters:focal(799x210:1105x516)/cdn.vox-cdn.com/uploads/chorus_image/image/70311477/harrypotter.0.jpg',
     hurt: 'https://media.vanityfair.com/photos/54ca8fa97e4b004120bb20b4/16:9/w_1280,c_limit/image.jpg',
-    dead: 'https://i.chzbgr.com/full/8974606336/h3D5083CB/crazy-fan-theory-on-whether-harry-potter-actually-died-or-not'
-  }
+    dead: 'https://i.chzbgr.com/full/8974606336/h3D5083CB/crazy-fan-theory-on-whether-harry-potter-actually-died-or-not',
+  },
+  kills: 0
 }
 
 const tom = {
@@ -13,7 +14,8 @@ const tom = {
     healthy: 'https://www.looper.com/img/gallery/dumbledores-history-with-voldemort-explained/intro-1641410297.jpg',
     hurt: 'https://imageio.forbes.com/specials-images/imageserve/77202458/The-Real-Look-of-Lord-Voldemort-from--Harry-Potter-and-the-Goblet-of-Fire-/960x0.jpg?fit=bounds&format=jpg&width=960',
     dead: 'https://static0.srcdn.com/wordpress/wp-content/uploads/2019/11/Voldemorts-Death.jpg?q=50&fit=crop&w=450&h=225&dpr=1.5',
-  }
+  },
+  kills: 0
 }
 
 function drawHarry() {
@@ -73,6 +75,9 @@ function drawTom() {
 }
 
 function atk() {
+  if (tom.health == 0) {
+    return
+  }
   if (harry.health > 0) {
     tom.health -= Math.floor(Math.random() * 10)
     if (tom.health <= 0) {
@@ -81,14 +86,19 @@ function atk() {
   }
   console.log(tom.health)
   drawTom()
+  killCount()
 }
 
 function dmg() {
+  if (harry.health == 0) {
+    return
+  }
   harry.health -= Math.floor(Math.random() * 10)
   if (harry.health <= 0) {
     harry.health = 0
   }
   drawHarry()
+  killCount()
 }
 
 function stopDmg() {
@@ -99,16 +109,23 @@ function stopDmg() {
 
 function killCount() {
   if (tom.health == 0) {
-
+    harry.kills++
+    document.getElementById("harry-kills").innerText = harry.kills
+  } else if (harry.health == 0) {
+    tom.kills++
+    document.getElementById("tom-kills").innerText = tom.kills
   }
 }
+
 
 function reset() {
   tom.health = 100
   harry.health = 100
   drawHarry()
   drawTom()
+
 }
+
 
 drawHarry()
 drawTom()
