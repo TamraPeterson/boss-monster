@@ -45,7 +45,7 @@ function drawChar() {
     template = `
     
     <h3 class="p-3">${key}</h3>
-      <img class="img img-fluid rounded clickable" onclick="attack(${key == "tom" ? "tom" : ""})" src="${character.images}"
+      <img class="img img-fluid rounded clickable" onclick="attack('${key == "tom" ? "tom" : ""}')" src="${character.images}"
       alt="">
       <h5 class="p-3">Health: <span id="health">${character.health}</span></h5>
       <div class="progress">
@@ -69,12 +69,13 @@ function updateChart(name) {
 
 // this function is invoked when you click on voldermort, which makes health decrease and if it is 0 then it equals 0, but harry potter has to have health above 100
 function attack(boss) {
-  console.log(boss.health)
-  if (boss.health > 0) {
-    boss.health -= Math.floor(Math.random() * 10)
-    console.log(boss.health);
-    if (boss.health <= 0) {
-      boss.health = 0
+  console.log(characters[boss].health);
+  let char = characters[boss]
+  if (char.health > 0) {
+    char.health -= Math.floor(Math.random() * 10)
+    console.log(char.health);
+    if (char.health <= 0) {
+      char.health = 0
     }
   }
   drawChar()
@@ -109,6 +110,7 @@ function reset() {
 
 
 drawChar()
+
 let dmgInterval = setInterval(damage, 500)
 let stopInterval = setInterval(stopDmg, 500)
 
