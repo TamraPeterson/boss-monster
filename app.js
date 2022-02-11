@@ -16,6 +16,11 @@ const tom = {
   }
 }
 
+const characters = {
+  tom,
+  harry,
+}
+
 function drawHarry() {
   let template = ''
   let image = ''
@@ -43,6 +48,20 @@ function drawHarry() {
   document.getElementById('harry').innerHTML = template
 }
 
+
+function drawChar(name) {
+  let template = ""
+  let img = ""
+  let char = characters[name]
+  if (char.health > 50) {
+    img = char.images.healthy
+  } else if (char.health > 0) {
+    img = char.images.healthy
+  } else {
+    img = char.image.healthy
+  }
+  template += 
+}
 
 function drawTom() {
   let template = ''
